@@ -19,7 +19,7 @@ function ToDoList({ id, text, completed, onDelete, onUpdate, onCompleteToggle })
     }
 
     function handleDelete() {
-        const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+        const confirmDelete = window.confirm("Are you sure you want to delete list?");
         if (confirmDelete) onDelete(id);
     }
 
