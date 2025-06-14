@@ -1,49 +1,73 @@
-import "./style.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import "./style.css";
 
-function ToDoList (props){
+function ToDoList({ id, text, completed, onDelete, onUpdate, onCompleteToggle }) {
+    const [inputText, setInputText] = useState(text);
+    const [isEditable, setIsEditable] = useState(false);
+
+    function handleEdit() {
+        setIsEditable(true);
+    }
+
+    function handleDone() {
+        const confirmed = window.confirm("Are you sure you want to save the changes?");
+        if (!confirmed) return;
+        setIsEditable(false);
+        onUpdate(id, inputText);
+    }
+
+    function handleDelete() {
+        const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+        if (confirmDelete) onDelete(id);
+    }
+
+    function handleCheckboxChange(e) {
+        const confirmComplete = window.confirm("Are you sure you want to mark as completed?");
+        if (confirmComplete) onCompleteToggle(id, e.target.checked);
+    }
+
+    if (!text.trim()) return null;
 
     return (
-        <>
-            <div className="list-item">
+        <div className="list-item">
+            <input
+                name="checkbox"
+                aria-label="checkbox"
+                type="checkbox"
+                checked={completed}
+                onChange={handleCheckboxChange}
+            />
+            <div className="inputcol">
                 <input
-                    name="checkbox"  
-                    aria-label="checkbox"
-                    value="checked"
-                    type="checkbox"
-                />
-                <div className="inputcol">
-                    <input 
-                    name="text" 
-                    className="textarea" 
+                    name="text"
+                    className="textarea"
                     aria-label="text"
-                    onChange={(e) => 
-                        setInputText(e.target.value)
-                    }
-                    ></input>
-                </div>
-                <button
-                    aria-label="edit" 
-                    type="button" 
-                    className="edit-btn"
-                    // onClick={handleAddToList}
-                >
-                    <FontAwesomeIcon icon={faEdit} />
-                </button>               
-                <button
-                    aria-label="delete" 
-                    type="button" 
-                    className="delete-btn"
-                    // onClick={handleAddToList}
-                >
-                    <FontAwesomeIcon icon={faTrash} />
-                </button>
-
+                    value={inputText}
+                    onChange={(e) => setInputText(e.target.value)}
+                    readOnly={!isEditable || completed}
+                />
             </div>
-        </>
-    )
+
+            {completed ? (
+                <span className="completed-status">Completed</span>
+            ) : !isEditable ? (
+                <>
+                    <button className="edit-btn" onClick={handleEdit}>
+                        <FontAwesomeIcon icon={faEdit} />
+                    </button>
+                    <button className="delete-btn" onClick={handleDelete}>
+                        <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                </>
+            ) : (
+                <button className="done-btn" onClick={handleDone}>
+                    <FontAwesomeIcon icon={faCheck} />
+                </button>
+            )}
+        </div>
+    );
 }
 
 export default ToDoList;
