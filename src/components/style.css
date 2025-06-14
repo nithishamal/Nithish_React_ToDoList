@@ -1,14 +1,127 @@
 *{
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    margin: 0px; 
+    padding: 0px;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-  background-color: #fff;
+.container-title{
+    border: 2px solid #5DC9A0;
+    border-radius: 5px;
+    width: 99%; /* Reduced from 100% */
+    color: #0C1F37;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    background-color: #5DC9A0;
+    padding: 0.5rem;
+    margin: 1rem auto 0; /* Add auto to center, margin-top preserved */
+    font-size: 1rem; /* Smaller header font */
+    height: 100%;
 }
 
+.container{
+    border-radius: 5px;
+    color: #F5F5F5;
+    background-color: #0C1F37;
+    height: 100%;
+    text-align: center;
+    width: 99%;
+    /* padding: 0.5rem; */
+    margin: 1rem auto 0;
+    /* padding: 2px;
+    width: 1800px; */
+}
+
+.inputcol{
+    margin: 20px;
+    padding: 10px;
+    /* width: 50%; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.textarea{
+    width: 100%;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    background-color: white; /* White background */
+    color: black;             /* Black text */
+    padding: 10px;
+    resize: none; /* Optional: prevents resizing */
+    border: 1px solid #ccc; /* subtle border */
+}
+
+.buttoninput{
+    background-color: #5DC9A0; /* Green background */
+    color: #0C1F37; /* White text */
+    width: 150px;
+    padding: 5px 10px; /* Padding inside the button */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make the button inline */
+    font-size: 16px; /* Font size */
+    font-weight: bolder;
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect */
+.buttoninput:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Active effect */
+.buttoninput:active {
+    background-color: #3e8e41; /* Even darker green when clicked */
+}
+
+
+.list-box{
+    border-radius: 5px;
+    color: #F5F5F5;
+    font-size: 16px;
+    background-color: #0C1F37;
+    height: 100%;
+    width: 99%;
+    padding: 10px;
+}
+
+.list-item{
+    display: grid;
+    grid-template-columns: 10% 60% 10% 10%;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 22px;
+    /* width: 99%; */
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 50px;
+}
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+.edit-btn {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 50px;
+}
+.edit-btn:hover {
+    background-color: darkblue;
+}

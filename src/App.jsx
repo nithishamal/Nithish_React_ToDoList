@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import "./components/style.css"
+import "./App.css"
 import Header from './components/Header'
+import ToDoItem from './components/ToDoItem'
+import ToDoList from './components/ToDoList'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -8,6 +10,8 @@ function App() {
   return (
     <>
       <Header />
+      <ToDoItem />
+      <ToDoList />
     </>
   )
 }
