@@ -24,8 +24,15 @@ function ToDoList({ id, text, completed, onDelete, onUpdate, onCompleteToggle })
     }
 
     function handleCheckboxChange(e) {
-        const confirmComplete = window.confirm("Are you sure you want to mark as completed?");
-        if (confirmComplete) onCompleteToggle(id, e.target.checked);
+        if (completed){
+            const confirmComplete = window.confirm("Are you sure you want to remove completed?");
+            if (confirmComplete) onCompleteToggle(id, e.target.checked);
+        }else{
+            const confirmComplete = window.confirm("Are you sure you want to mark as completed?");
+            if (confirmComplete) onCompleteToggle(id, e.target.checked);
+        }
+        
+        
     }
 
     if (!text.trim()) return null;
